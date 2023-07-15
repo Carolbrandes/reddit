@@ -1,3 +1,4 @@
+import { ButtonSeeMore } from "../ButtonSeeMore";
 import { Loading } from "../Loading";
 import { Post } from "./Post";
 import * as S from "./styles";
@@ -21,6 +22,8 @@ export const PostList = () => {
       {status === "loading" && <Loading />}
       {status === "success" &&
         postsArray.map((post: any) => <Post key={post[0]} post={post[1]} />)}
+
+      <ButtonSeeMore />
     </S.Container>
   );
 };

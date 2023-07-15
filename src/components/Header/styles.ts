@@ -12,7 +12,7 @@ export const Container = styled.header`
   h1 {
     text-transform: uppercase;
     span {
-      color: #ffb800;
+      color: ${(props) => props.theme.colors.terciary};
     }
   }
 `;

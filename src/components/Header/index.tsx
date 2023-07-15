@@ -18,14 +18,17 @@ export const Header: React.FC<Props> = ({ toggleTheme }) => {
       </h1>
       <S.Switch>
         <Switch
+          className="switch-theme"
           onChange={toggleTheme}
           checked={theme?.title === "dark"}
           checkedIcon={false}
           uncheckedIcon={false}
-          height={10}
-          width={40}
-          handleDiameter={20}
-          offColor="#c8cbcf"
+          height={30}
+          width={60}
+          onHandleColor={theme?.colors.terciary}
+          offHandleColor={theme?.colors.terciary}
+          handleDiameter={30}
+          offColor="#ffffff"
           onColor="#FFFB22"
         />
       </S.Switch>

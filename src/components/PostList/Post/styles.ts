@@ -4,7 +4,7 @@ export const Container = styled.article`
   display: flex;
   align-items: center;
   border-top: 1px solid ${(props) => props.theme.colors.quartenary};
-  padding-top: 0.75rem;
+  padding: 0.75rem 0 1rem 0;
 `;
 
 const IMGStyles = `

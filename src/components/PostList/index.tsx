@@ -10,6 +10,13 @@ export const PostList = () => {
       domain: "dominio.io",
       image: "",
     },
+    {
+      title: "titulo do post",
+      moment: "enviado há 6 horas por",
+      user: "usuário_nickname",
+      domain: "dominio.io",
+      image: "",
+    },
   ];
   return (
     <S.Container data-style="post-list">

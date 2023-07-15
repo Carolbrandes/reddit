@@ -28,8 +28,8 @@ export const Header: React.FC<Props> = ({ toggleTheme }) => {
           onHandleColor={theme?.colors.terciary}
           offHandleColor={theme?.colors.terciary}
           handleDiameter={30}
-          offColor="#ffffff"
-          onColor="#FFFB22"
+          offColor="#c2c0c0"
+          onColor="#fff"
         />
       </S.Switch>
     </S.Container>

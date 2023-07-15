@@ -24,7 +24,7 @@ export default createGlobalStyle`
   body {
     background: ${(props) => props.theme.colors.background};
     font-size: 14px;
-    color: ${(props) => props.theme.colors.textv1};
+    color: ${(props) => props.theme.colors.text};
     ${fontPrimary};
     font-weight: 400;
      -webkit-font-smoothing: antialiased;
@@ -35,8 +35,12 @@ export default createGlobalStyle`
     font-weight: 400; 
   }
 
-  h1, h2, h3, h4, h5, h6, strong{
+  h1, h2, h3, strong{
     font-weight: 700;
+  }
+
+  h4, h5, h6 {
+    font-weight: 600;
   }
 
   button{

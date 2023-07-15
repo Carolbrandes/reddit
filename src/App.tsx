@@ -5,6 +5,8 @@ import GlobalStyle from "./styles/global";
 import { Header } from "./components/Header";
 import dark from "./styles/themes/dark";
 import light from "./styles/themes/light";
+import { FilterBar } from "./components/FilterBar";
+import { PostList } from "./components/PostList";
 
 function App() {
   const [theme, setTheme] = usePeristedState<DefaultTheme>("theme", light);
@@ -19,6 +21,10 @@ function App() {
         <GlobalStyle />
 
         <Header toggleTheme={toggleTheme} />
+
+        <FilterBar />
+
+        <PostList />
       </div>
     </ThemeProvider>
   );

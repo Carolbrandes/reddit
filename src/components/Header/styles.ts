@@ -8,9 +8,12 @@ export const Container = styled.header`
   justify-content: center;
   padding: 1.5rem 0;
   position: relative;
+  margin-bottom: 1rem;
 
   h1 {
     text-transform: uppercase;
+    font-size: 2rem;
+
     span {
       color: ${(props) => props.theme.colors.terciary};
     }

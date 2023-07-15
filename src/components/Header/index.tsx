@@ -12,11 +12,11 @@ export const Header: React.FC<Props> = ({ toggleTheme }) => {
   const theme = useContext(ThemeContext);
 
   return (
-    <S.Container>
+    <S.Container data-style="header">
       <h1>
         react<span>js</span>
       </h1>
-      <S.Switch>
+      <S.Switch data-style="switch">
         <Switch
           className="switch-theme"
           onChange={toggleTheme}

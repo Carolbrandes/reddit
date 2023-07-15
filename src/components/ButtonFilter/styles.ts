@@ -18,5 +18,9 @@ export const Container = styled.div<{ isActive?: boolean }>`
       props.isActive
         ? props.theme.colors.primary
         : props.theme.colors.secundary};
+
+    @media screen and (max-width: 767px) {
+      padding: 0.5rem 2rem;
+    }
   }
 `;

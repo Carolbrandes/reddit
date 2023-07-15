@@ -8,14 +8,17 @@ export const Container = styled.article`
 `;
 
 const IMGStyles = `
-  width: 4.8rem;
-  height: 4.8rem;
+  min-width: 77px;
+  height: 77px;
   border-radius: 8px;
-  margin-right: .81rem;
+  margin-right: 13px;
 `;
 
 export const BackgroundIMG = styled.div<{ url?: string }>`
   background: url(${(props) => props.url});
+  background-size: cover;
+  background-repeat: no-repeat;
+
   ${IMGStyles};
 `;
 

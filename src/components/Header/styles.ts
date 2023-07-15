@@ -1,0 +1,25 @@
+import styled from "styled-components";
+
+export const Container = styled.header`
+  background: ${(props) => props.theme.colors.primary};
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 0;
+  position: relative;
+
+  h1 {
+    text-transform: uppercase;
+    span {
+      color: #ffb800;
+    }
+  }
+`;
+
+export const Switch = styled.div`
+  position: absolute;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+`;

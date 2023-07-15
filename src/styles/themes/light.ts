@@ -6,10 +6,7 @@ export default {
     secundary: "#A7B0BE",
 
     background: "#fff",
-
     textv1: "#000",
     textv2: "#4C5667",
-
-    textButton: "#fff",
   },
 };

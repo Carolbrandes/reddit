@@ -1,10 +1,10 @@
 import { ThemeProvider, DefaultTheme } from "styled-components";
 import usePeristedState from "./hooks/usePersistedState";
 
-import light from "./styles/themes/light";
-import dark from "./styles/themes/dark";
-
 import GlobalStyle from "./styles/global";
+import { Header } from "./components/Header";
+import dark from "./styles/themes/dark";
+import light from "./styles/themes/light";
 
 function App() {
   const [theme, setTheme] = usePeristedState<DefaultTheme>("theme", light);
@@ -17,8 +17,8 @@ function App() {
     <ThemeProvider theme={theme}>
       <div className="App">
         <GlobalStyle />
-        <h1>teste</h1>
-        {/* <Header toggleTheme={toggleTheme} /> */}
+
+        <Header toggleTheme={toggleTheme} />
       </div>
     </ThemeProvider>
   );

@@ -3,15 +3,7 @@ import moment from "moment";
 import "moment/dist/locale/pt-br";
 
 interface Props {
-  post: {
-    title: string;
-    created: string;
-    author: string;
-    domain: string;
-    thumbnail: {
-      url: string;
-    };
-  };
+  post: Post;
 }
 
 export const Post: React.FC<Props> = ({ post }) => {

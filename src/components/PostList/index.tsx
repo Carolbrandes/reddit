@@ -1,32 +1,23 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { ButtonSeeMore } from "../ButtonSeeMore";
 import { Loading } from "../Loading";
 import { Post } from "./Post";
 import * as S from "./styles";
 import { useQuery } from "react-query";
+import { fetchPosts } from "../../services/fetchPosts";
+import { UserContext } from "../../context/globalContext";
 
 interface PostArray {
   0: string;
-  1: {
-    title: string;
-    created: string;
-    author: string;
-    domain: string;
-    thumbnail: {
-      url: string;
-    };
-  };
+  1: Post;
 }
 
-const fetchPosts = async () => {
-  const res = await fetch(
-    "https://gateway.reddit.com/desktopapi/v1/subreddits/reactjs?rtj=only&redditWebClient=web2x&app=web2x-client-production&include=identity&sort=rising&layout=card"
-  );
-  return res.json();
-};
-
 export const PostList = () => {
-  const { data, status } = useQuery("posts", fetchPosts);
+  const { selectedButtonFilter }: Context = useContext(UserContext);
+
+  const { data, status } = useQuery(["posts", selectedButtonFilter], () =>
+    fetchPosts(selectedButtonFilter || "hot")
+  );
   const postsPorPage = 5;
   const [numberPostsToShow, setNumberPostsToShow] = useState(postsPorPage);
 
@@ -42,7 +33,7 @@ export const PostList = () => {
       {status === "error" && <p>Error fetching data</p>}
       {status === "loading" && <Loading />}
       {status === "success" &&
-        postsToShow.map((post: PostArray) => (
+        postsToShow?.map((post: PostArray) => (
           <Post key={post[0]} post={post[1]} />
         ))}
 

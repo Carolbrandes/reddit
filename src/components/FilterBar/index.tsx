@@ -5,13 +5,13 @@ export const FilterBar = () => {
   return (
     <S.Container data-style="filter-bar">
       <div>
-        <ButtonFilter text="Hot" isActive />
+        <ButtonFilter text="Hot" sort="hot" />
       </div>
       <div>
-        <ButtonFilter text="News" />
+        <ButtonFilter text="News" sort="new" />
       </div>
       <div>
-        <ButtonFilter text="Rising" />
+        <ButtonFilter text="Rising" sort="rising" />
       </div>
     </S.Container>
   );

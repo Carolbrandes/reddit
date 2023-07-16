@@ -9,6 +9,7 @@ import { FilterBar } from "./components/FilterBar";
 import { PostList } from "./components/PostList";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ErrorFallback } from "./components/ErrorFalback";
+import { UserStorage } from "./context/globalContext";
 
 const queryClient = new QueryClient();
 
@@ -21,19 +22,21 @@ function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <ThemeProvider theme={theme}>
-        <div className="App">
-          <GlobalStyle />
+      <UserStorage>
+        <ThemeProvider theme={theme}>
+          <div className="App">
+            <GlobalStyle />
 
-          <Header toggleTheme={toggleTheme} />
+            <Header toggleTheme={toggleTheme} />
 
-          <FilterBar />
+            <FilterBar />
 
-          <ErrorBoundary FallbackComponent={ErrorFallback}>
-            <PostList />
-          </ErrorBoundary>
-        </div>
-      </ThemeProvider>
+            <ErrorBoundary FallbackComponent={ErrorFallback}>
+              <PostList />
+            </ErrorBoundary>
+          </div>
+        </ThemeProvider>
+      </UserStorage>
     </QueryClientProvider>
   );
 }

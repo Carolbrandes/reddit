@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useMemo, useState } from "react";
 import { ButtonSeeMore } from "../ButtonSeeMore";
 import { Loading } from "../Loading";
 import { Post } from "./Post";
@@ -24,7 +24,10 @@ export const PostList = () => {
   const handleBtnMore = () =>
     setNumberPostsToShow((oldNumber) => oldNumber + postsPorPage);
 
-  const postsArray = data?.posts && Object.entries(data?.posts);
+  const postsArray = useMemo(
+    () => data?.posts && Object.entries(data?.posts),
+    [data],
+  );
 
   const postsToShow = postsArray?.slice(0, numberPostsToShow);
 

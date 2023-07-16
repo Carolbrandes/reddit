@@ -1,12 +1,13 @@
 import * as S from "./styles";
 import moment from "moment";
 import "moment/dist/locale/pt-br";
+import { memo } from "react";
 
 interface Props {
   post: Post;
 }
 
-export const Post: React.FC<Props> = ({ post }) => {
+export const Post: React.FC<Props> = memo(({ post }) => {
   const { title, created, author, domain, thumbnail } = post;
   const receiveMoment = moment(created).locale("pt-br");
   const hours = receiveMoment.startOf("hour").fromNow();
@@ -28,4 +29,4 @@ export const Post: React.FC<Props> = ({ post }) => {
       </div>
     </S.Container>
   );
-};
+});

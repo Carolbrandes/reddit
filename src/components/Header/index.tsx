@@ -1,6 +1,8 @@
 import React, { useContext } from "react";
 import Switch from "react-switch";
 import { ThemeContext } from "styled-components";
+import { CiDark } from "react-icons/ci";
+import { BsSun } from "react-icons/bs";
 
 import * as S from "./styles";
 
@@ -16,13 +18,13 @@ export const Header: React.FC<Props> = ({ toggleTheme }) => {
       <h1>
         react<span>js</span>
       </h1>
-      <S.Switch data-style="switch">
+      <S.Switch data-style="switch" theme={theme?.title}>
         <Switch
           className="switch-theme"
           onChange={toggleTheme}
           checked={theme?.title === "dark"}
-          checkedIcon={false}
-          uncheckedIcon={false}
+          checkedIcon={<CiDark size={25} />}
+          uncheckedIcon={<BsSun color={theme?.colors.primary} size={20} />}
           height={30}
           width={60}
           onHandleColor={theme?.colors.terciary}

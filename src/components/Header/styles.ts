@@ -20,9 +20,15 @@ export const Container = styled.header`
   }
 `;
 
-export const Switch = styled.div`
+export const Switch = styled.div<{ theme?: string }>`
   position: absolute;
   right: 2rem;
   top: 50%;
   transform: translateY(-50%);
+
+  svg {
+    position: relative;
+    top: ${(props) => (props.theme == "dark" ? "2px" : "4px")};
+    left: 5px;
+  }
 `;

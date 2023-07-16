@@ -16,7 +16,7 @@ export const PostList = () => {
   const { selectedButtonFilter }: Context = useContext(UserContext);
 
   const { data, status } = useQuery(["posts", selectedButtonFilter], () =>
-    fetchPosts(selectedButtonFilter || "hot")
+    fetchPosts(selectedButtonFilter || "hot"),
   );
   const postsPorPage = 5;
   const [numberPostsToShow, setNumberPostsToShow] = useState(postsPorPage);

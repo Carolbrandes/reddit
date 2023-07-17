@@ -4,11 +4,14 @@ interface Context {
 }
 
 interface Post {
+  id: string;
   title: string;
   created: string;
   author: string;
   domain: string;
-  thumbnail: {
-    url: string;
+  media: {
+    oembed: {
+      thumbnail_url: string;
+    };
   };
 }

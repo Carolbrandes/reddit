@@ -8,8 +8,9 @@ export const Container = styled.article`
 `;
 
 const IMGStyles = `
-  min-width: 77px;
-  height: 77px;
+  min-width: 4.8rem;
+  width: 4.8rem;
+  height: 4.8rem;
   border-radius: 8px;
   margin-right: 13px;
 `;
@@ -24,6 +25,11 @@ export const BackgroundIMG = styled.div<{ url?: string }>`
 
 export const Background = styled.div`
   background: #a7b0be;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  text-align: center;
   ${IMGStyles};
 `;
 

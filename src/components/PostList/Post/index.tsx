@@ -8,16 +8,17 @@ interface Props {
 }
 
 export const Post: React.FC<Props> = memo(({ post }) => {
-  const { title, created, author, domain, thumbnail } = post;
+  const { title, created, author, domain, media } = post;
   const receiveMoment = moment(created).locale("pt-br");
   const hours = receiveMoment.startOf("hour").fromNow();
+  const urlImg = media?.oembed?.thumbnail_url;
 
   return (
     <S.Container data-style="post">
-      {thumbnail?.url?.match(/(.jpg|.png|.gif)/) ? (
-        <S.BackgroundIMG url={thumbnail?.url} />
+      {urlImg ? (
+        <S.BackgroundIMG url={urlImg} />
       ) : (
-        <S.Background />
+        <S.Background>Sem Imagem</S.Background>
       )}
 
       <div>

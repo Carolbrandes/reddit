@@ -1,8 +1,17 @@
+const baseUrl = "https://oauth.reddit.com";
+
 export const fetchPosts = async (sort: string) => {
+  console.log("faz requisicao");
   try {
-    const res = await fetch(
-      `https://gateway.reddit.com/desktopapi/v1/subreddits/reactjs?rtj=only&redditWebClient=web2x&app=web2x-client-production&include=identity&sort=${sort}&layout=card`,
-    );
+    const token = import.meta.env.VITE_TOKEN;
+
+    const res = await fetch(`${baseUrl}/r/react/${sort}`, {
+      headers: {
+        "User-Agent": "ChangeMeClient/0.1 by YourUsername",
+        Authorization: `bearer ${token}`,
+      },
+    });
+    console.log("🚀 ~ file: fetchPosts.ts:34 ~ fetchPosts ~ res:", res);
     return res.json();
   } catch (e) {
     console.error(e);

@@ -7,9 +7,8 @@ import { useQuery } from "react-query";
 import { fetchPosts } from "../../services/fetchPosts";
 import { UserContext } from "../../context/globalContext";
 
-interface PostArray {
-  0: string;
-  1: Post;
+interface PostData {
+  data: Post;
 }
 
 export const PostList = () => {
@@ -24,10 +23,9 @@ export const PostList = () => {
   const handleBtnMore = () =>
     setNumberPostsToShow((oldNumber) => oldNumber + postsPorPage);
 
-  const postsArray = useMemo(
-    () => data?.posts && Object.entries(data?.posts),
-    [data],
-  );
+  console.log("data fetch =>", data);
+
+  const postsArray = useMemo(() => data?.data?.children, [data]);
 
   const postsToShow = postsArray?.slice(0, numberPostsToShow);
 
@@ -36,8 +34,8 @@ export const PostList = () => {
       {status === "error" && <p>Error fetching data</p>}
       {status === "loading" && <Loading />}
       {status === "success" &&
-        postsToShow?.map((post: PostArray) => (
-          <Post key={post[0]} post={post[1]} />
+        postsToShow?.map((post: PostData) => (
+          <Post key={post?.data?.id} post={post?.data} />
         ))}
 
       {postsToShow?.length < postsArray?.length && (

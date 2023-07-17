@@ -20,7 +20,9 @@ App em React que exibe posts usando api do reddit de acordo com os filtros Hot, 
 
 ## API Reference
 
-1)www.reddit.com/prefs/apps (fazer login ou criar a conta e criar um aplicativo para pegar personal user script e secret) 2) github.com/reddit-archive/reddit/wiki/OAuth2-Quick-Start-Example (curl para gerar token) 3) reddit.com/dev/api#GET_api_v1_me (documentação reddit api)
+- www.reddit.com/prefs/apps (fazer login ou criar a conta e criar um aplicativo para pegar personal user script e secret)
+- github.com/reddit-archive/reddit/wiki/OAuth2-Quick-Start-Example (curl para gerar token)
+- reddit.com/dev/api#GET_api_v1_me (documentação reddit api)
 
 #### Get all items
 

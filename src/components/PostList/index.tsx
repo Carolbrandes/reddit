@@ -1,4 +1,4 @@
-import { useContext, useMemo, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import { ButtonSeeMore } from "../ButtonSeeMore";
 import { Loading } from "../Loading";
 import { Post } from "./Post";
@@ -17,17 +17,23 @@ export const PostList = () => {
   const { data, status } = useQuery(["posts", selectedButtonFilter], () =>
     fetchPosts(selectedButtonFilter || "hot"),
   );
-  const postsPorPage = 5;
+  const postsPorPage = 8;
   const [numberPostsToShow, setNumberPostsToShow] = useState(postsPorPage);
+
+  const [postsToShow, setPostsToShow] = useState([]);
 
   const handleBtnMore = () =>
     setNumberPostsToShow((oldNumber) => oldNumber + postsPorPage);
 
-  console.log("data fetch =>", data);
-
   const postsArray = useMemo(() => data?.data?.children, [data]);
 
-  const postsToShow = postsArray?.slice(0, numberPostsToShow);
+  useEffect(() => {
+    setNumberPostsToShow(postsPorPage);
+  }, [selectedButtonFilter]);
+
+  useEffect(() => {
+    setPostsToShow(postsArray?.slice(0, numberPostsToShow));
+  }, [numberPostsToShow, selectedButtonFilter, postsArray]);
 
   return (
     <S.Container data-style="post-list">

@@ -4,7 +4,7 @@ import { Loading } from "../Loading";
 import { Post } from "./Post";
 import * as S from "./styles";
 import { useQuery } from "react-query";
-import { fetchPosts } from "../../services/fetchPosts";
+import { api } from "../../services/api";
 import { UserContext } from "../../context/globalContext";
 
 interface PostData {
@@ -15,8 +15,9 @@ export const PostList = () => {
   const { selectedButtonFilter }: Context = useContext(UserContext);
 
   const { data, status } = useQuery(["posts", selectedButtonFilter], () =>
-    fetchPosts(selectedButtonFilter || "hot"),
+    api.get(`/r/react/${selectedButtonFilter || "hot"}`),
   );
+
   const postsPorPage = 8;
   const [numberPostsToShow, setNumberPostsToShow] = useState(postsPorPage);
 
@@ -25,7 +26,7 @@ export const PostList = () => {
   const handleBtnMore = () =>
     setNumberPostsToShow((oldNumber) => oldNumber + postsPorPage);
 
-  const postsArray = useMemo(() => data?.data?.children, [data]);
+  const postsArray = useMemo(() => data?.data?.data?.children, [data]);
 
   useEffect(() => {
     setNumberPostsToShow(postsPorPage);

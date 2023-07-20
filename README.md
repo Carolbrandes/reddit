@@ -36,4 +36,4 @@ App em React que exibe posts usando api do reddit de acordo com os filtros Hot, 
 
 ## Deploy vercel
 
-https://reddit-eta-livid.vercel.app/
+https://reddit-gilt.vercel.app/

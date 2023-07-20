@@ -6,6 +6,7 @@ import * as S from "./styles";
 import { useQuery } from "react-query";
 import { api } from "../../services/api";
 import { UserContext } from "../../context/globalContext";
+import { ErrorFallback } from "../ErrorFalback";
 
 interface PostData {
   data: Post;
@@ -14,8 +15,9 @@ interface PostData {
 export const PostList = () => {
   const { selectedButtonFilter }: Context = useContext(UserContext);
 
-  const { data, status } = useQuery(["posts", selectedButtonFilter], () =>
-    api.get(`/r/react/${selectedButtonFilter || "hot"}`),
+  const { data, status, error } = useQuery(
+    ["posts", selectedButtonFilter],
+    () => api.getPosts(selectedButtonFilter || "hot"),
   );
 
   const postsPorPage = 8;
@@ -26,7 +28,7 @@ export const PostList = () => {
   const handleBtnMore = () =>
     setNumberPostsToShow((oldNumber) => oldNumber + postsPorPage);
 
-  const postsArray = useMemo(() => data?.data?.data?.children, [data]);
+  const postsArray = useMemo(() => data?.data?.children, [data]);
 
   useEffect(() => {
     setNumberPostsToShow(postsPorPage);
@@ -38,7 +40,16 @@ export const PostList = () => {
 
   return (
     <S.Container data-style="post-list">
-      {status === "error" && <p>Error fetching data</p>}
+      {status === "error" && (
+        <ErrorFallback
+          error={error}
+          resetErrorBoundary={() => {
+            throw new Error(
+              "Tivemos um problema, não conseguimos carregar os posts",
+            );
+          }}
+        />
+      )}
       {status === "loading" && <Loading />}
       {status === "success" &&
         postsToShow?.map((post: PostData) => (

@@ -1,6 +1,5 @@
 import { ThemeProvider, DefaultTheme } from "styled-components";
 import usePeristedState from "./hooks/usePersistedState";
-import { ErrorBoundary } from "react-error-boundary";
 import GlobalStyle from "./styles/global";
 import { Header } from "./components/Header";
 import dark from "./styles/themes/dark";
@@ -8,7 +7,6 @@ import light from "./styles/themes/light";
 import { FilterBar } from "./components/FilterBar";
 import { PostList } from "./components/PostList";
 import { QueryClient, QueryClientProvider } from "react-query";
-import { ErrorFallback } from "./components/ErrorFalback";
 import { UserStorage } from "./context/globalContext";
 
 const queryClient = new QueryClient();
@@ -31,9 +29,7 @@ function App() {
 
             <FilterBar />
 
-            <ErrorBoundary FallbackComponent={ErrorFallback}>
-              <PostList />
-            </ErrorBoundary>
+            <PostList />
           </div>
         </ThemeProvider>
       </UserStorage>
